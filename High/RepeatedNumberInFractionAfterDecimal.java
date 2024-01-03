@@ -24,7 +24,8 @@ public class RepeatedNumberInFractionAfterDecimal {
 		int i = 0;
 		boolean repeated = false;
 		while (i < subString.length()) {
-			if (intermediateSubString.length() > 0 && (i + intermediateSubString.length() < subString.length())
+			if (intermediateSubString.length() > 0 &&
+					(i + intermediateSubString.length() < subString.length())
 					&& subString.substring(i, i + intermediateSubString.length()).equals(intermediateSubString)) {
 				repeated = true;
 				break;

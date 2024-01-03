@@ -125,7 +125,7 @@ class LongestTree
         boolean passed = true;
     for(Map.Entry<Map<Integer,Integer>, Integer> entry : testCases.entrySet())
     {
-      final Integer actual = largestTree(entry.getKey());
+      final Integer actual = findLargestTree(entry.getKey());
       if(!actual.equals(entry.getValue()))
       {
         passed = false;
@@ -150,5 +150,59 @@ class LongestTree
     {
       System.out.println("Tests fail.");
     }
+  }
+
+  public static int findLargestTree(Map<Integer, Integer> treeMap) {
+    Map<Integer, Set<Integer>> trees = new HashMap<>();
+    Set<Integer> allNodes = new HashSet<>(treeMap.keySet());
+// Build trees based on the parent-child relationships
+
+    for (int child : allNodes) {
+      int parent = treeMap.getOrDefault(child, child);
+      trees.computeIfAbsent(parent, k -> new HashSet<>()).add(child);
+    }
+    int largestTreeRoot = Integer.MAX_VALUE;
+    int largestTreeSize = 0;
+// Find the largest tree and its root
+
+    for (int root : trees.keySet()) {
+      Set<Integer> visited = new HashSet<>();
+      int treeSize = dfs(root, trees, visited);
+      if (treeSize > largestTreeSize || (treeSize == largestTreeSize && root < largestTreeRoot)) {
+        largestTreeRoot = root;
+        largestTreeSize = treeSize;
+      }
+    }
+    return largestTreeRoot;
+  }
+
+  private static int dfs(int node, Map<Integer, Set<Integer>> trees, Set<Integer> visited) {
+    if (visited.contains(node)) {
+      return 0;
+    }
+    visited.add(node);
+    int size = 1;
+    for (int child : trees.getOrDefault(node, Collections.emptySet())) {
+      size += dfs(child, trees, visited);
+    }
+    return size;
+  }
+
+
+  public static int findLargestTreeNew(Map<Integer, Integer> treeMap) {
+    // child --> parent
+
+    Set<Integer> nodes = treeMap.keySet();
+    Map<Integer, Set<Integer>> trees = new HashMap<>();
+
+    for(int child:nodes){
+      int parent = treeMap.getOrDefault(child,child);
+      trees.computeIfAbsent(parent,k-> new HashSet<>()).add(child);
+    }
+
+    for(int parent:trees.keySet()){
+
+    }
+    return 1;
   }
 }

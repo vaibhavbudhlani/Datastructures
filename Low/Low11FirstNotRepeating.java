@@ -1,9 +1,6 @@
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Low11FirstNotRepeating {
@@ -42,6 +39,24 @@ public class Low11FirstNotRepeating {
 		return '0';
 	  }
 
+	  public static char firstNonrepeatingnew(String s){
+		  if(s.isEmpty() || Objects.isNull(s)){
+			  return '0';
+		  }
+		  boolean flag = true;
+		  for(char c : s.toCharArray()){
+			  if(s.indexOf(c) == s.lastIndexOf(c)){
+				  flag = false;
+				  return c;
+			  }
+		  }
+		  if(flag){
+			  return '0';
+		  }
+
+		  return 0;
+	  }
+
 	  public static void main(String args[])
 	  {
 
@@ -51,7 +66,7 @@ public class Low11FirstNotRepeating {
 	    boolean result = true;
 	    for(int i = 0; i < inputs.length; i++ )
 	    {
-	      result = result && findFirst(inputs[i]) == outputs[i];
+	      result = result && firstNonrepeatingnew(inputs[i]) == outputs[i];
 	      if(!result)
 	        System.out.println("Test failed for: " + inputs[i]);
 	      else

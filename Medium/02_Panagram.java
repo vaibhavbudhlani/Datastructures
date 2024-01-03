@@ -17,14 +17,19 @@ class Panagram {
 
   public String findMissingLetters(String sentence) {
 	HashMap <Character, Boolean> charCheck = new HashMap<>();
+    List<Character> checkList = new ArrayList<>();
 	for(char c : sentence.toLowerCase().toCharArray()) {
-		charCheck.put(c, true);
+        checkList.add(c);
+	//	charCheck.put(c, true);
 	}
 	StringBuilder sb = new StringBuilder();
 	for(char c = 'a'; c <= 'z'; c++) {
-		if(!charCheck.containsKey(c)) {
-			sb.append(c);
-		}
+//		if(!charCheck.containsKey(c)) {
+//			sb.append(c);
+//		}
+        if(!checkList.contains(c)){
+            sb.append(c);
+        }
 	}
 	return sb.toString();
   }
@@ -37,6 +42,7 @@ class Panagram {
 
   success = success && "".equals(pd.findMissingLetters("The quick brown fox jumps over the lazy dog"));
   success = success && "abcdefghijklmnopqrstuvwxyz".equals(pd.findMissingLetters(""));
+  success = success && "abcdefghijklmnopqrstuvwz".equals(pd.findMissingLetters("xy"));
 
   if (success) {
     System.out.println("Pass ");

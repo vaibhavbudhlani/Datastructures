@@ -38,7 +38,7 @@ public class PowerDoublevb {
   public static boolean doTestsPass() {
     boolean doTestsPass = true;
 	double result = power(4,3);
-    return  doTestsPass;
+    return  doTestsPass && result == 64;
   }
 
   public static void main( String[] args ) {

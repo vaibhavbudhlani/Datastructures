@@ -64,10 +64,14 @@ class H28OptimalPath {
 			return 0;
 		}
 		int[][] gridValue = new int[grid.length][grid[0].length];
-		for(int i = 0; i < grid.length; i++) {
-			for(int j = 0; j < grid[0].length; j++) {
-				gridValue[i][j] = -1;
-			}
+//		for(int i = 0; i < grid.length; i++) {
+//			for(int j = 0; j < grid[0].length; j++) {
+//				gridValue[i][j] = -1;
+//			}
+//		}
+
+		for(int[] row:gridValue){
+			Arrays.fill(row,-1);
 		}
 		optimalPathFinder(grid, grid.length - 1, 0, gridValue);
 //		System.out.println(gridValue[0][grid[0].length - 1]);

@@ -190,11 +190,63 @@ public class MedianofSortedArrays
 
 	}
 
+	private static void getMedian(int a[],int b[]){
+		int n = a.length;
+		int m = b.length;
+		int ans = 0;
+
+		if(n > m ){
+			getMedian(b, a);
+		}
+		boolean even = (n + m )% 2 == 0 ;
+
+		int realmid = (n + m +1 ) / 2;
+		int start = 0;
+		int end = n;
+
+		while(start <= end ){
+			int mid = (start + end )/ 2;
+			int leftsize = mid;
+			int rightsize = realmid - mid;
+
+			int leftA = leftsize > 0 ? a[leftsize - 1] : Integer.MIN_VALUE;
+			int leftB = rightsize > 0 ? b[rightsize - 1] : Integer.MIN_VALUE ;
+
+			int rightA = leftsize < n ? a[leftsize]: Integer.MAX_VALUE;
+			int rightB = rightsize < m ? b[rightsize]: Integer.MAX_VALUE;
+
+			if(leftA <= rightB  && leftB <= rightA){
+				if(even){
+					ans = (Math.max(leftA,leftB) + Math.min(rightA,rightB)) / 2;
+				}
+				else{
+					ans = Math.max(leftA,leftB);
+				}
+				System.out.println(ans);
+                   break;
+			}
+			else if(leftA > rightB){
+				end = mid -1 ;
+			}
+			else{
+				start = mid+1;
+			}
 
 
-  public static void main(String[] args)
-  {
+
+		}
+
+	}
+
+
+
+
+	public static void main(String[] args)
+  {   int a[] ={1,3,6,8,10};
+	  int b[] ={2};
 	  //System.out.println(medianOfSortedArrays(new int[]{1,3},new int[]{2}));
-	  System.out.println(Median(new int[]{1,3},new int[]{2}));
+	//  System.out.println(Median(new int[]{1,3},new int[]{2}));
+	 // System.out.println(Median(a,b));
+	  getMedian(b,a);
   }
 }

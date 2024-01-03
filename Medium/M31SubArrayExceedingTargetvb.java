@@ -41,7 +41,7 @@ public class M31SubArrayExceedingTargetvb
    boolean result = true; 
   int[] arr = { 1, 2, 3, 4 };
   int n = arr.length;
-  int res = (n * (n+1)) / 2;
+
   result = result && minSubArrayLen( arr, 6 ) == 2;
   result = result && minSubArrayLen( arr, 12 ) == -1;
 

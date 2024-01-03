@@ -75,15 +75,15 @@ public class H32TrainMap {
 	private static class Node {
 		Station station;
 		List<Station> path = new ArrayList<>();
-		
+
 		public Node(Station station) {
 			this.station = station;
 		}
-		
+
 		public Station getStation() {
 			return station;
 		}
-		
+
 		public List<Station> getPath() {
 			return path;
 		}
@@ -128,9 +128,7 @@ public class H32TrainMap {
 		}
 
 		public List<Station> shortestPath(String from, String to) {
-			/*
-			 * TODO Implement
-			 */
+
 			if(from.equals(to)) {
 				return Collections.emptyList();
 			}

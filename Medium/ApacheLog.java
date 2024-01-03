@@ -32,19 +32,21 @@ public static String findTopIpaddress(String[] lines) {
         Matcher matcher = pattern.matcher(line);
         if (matcher.find()) {
             String ipAddress = matcher.group();// line.split(" ")[0];
-            Integer count = ipAddressCountMap.getOrDefault(ipAddress, 0) + 1;
-            ipAddressCountMap.put(ipAddress, count);
+//            Integer count = ipAddressCountMap.getOrDefault(ipAddress, 0) + 1;
+//            ipAddressCountMap.put(ipAddress, count);
+            ipAddressCountMap.compute(ipAddress,((s, val) -> val==null?1: val+1 ));
         } else {
             System.out.println("Invalid IP address while reading line  -- " + line);
         }
     });
 
     try {
-        ipAddressCountMap.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).orElse(null).getKey();
+        ipAddressCountMap.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue))
+                .orElse(null).getKey();
         Integer topCount = ipAddressCountMap.values().stream().mapToInt(v -> v).max()
                 .orElseThrow(IllegalArgumentException::new);
         return ipAddressCountMap.entrySet().stream().filter(x -> x.getValue() == topCount).
-                map(e -> e.getKey()).collect(Collectors.joining());
+                map(Map.Entry::getKey).collect(Collectors.joining());
                 //.collect(Collectors.toCollection(HashSet::new));
     } catch (IllegalArgumentException exc) {
         System.out.println("Couldn't find a Valid IP Address in any of the lines!! ");

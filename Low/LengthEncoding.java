@@ -38,10 +38,11 @@ public class LengthEncoding {
 
  public static void main(String[] args)  {
     
-	  if("".equals(rle("")) && 
-			  "a1".equals(rle("a")) && 
+	  if("".equals(rle("")) &&
+			  "a1".equals(rle("a")) &&
 			  "a3".equals(rle("aaa"))){
 		  System.out.println("Passed");
+		  System.out.println(rle("a"));
 		  System.out.println(rle("aaabvcvvv"));
 		  System.out.println(rle("aabbb"));
 	  }else {
