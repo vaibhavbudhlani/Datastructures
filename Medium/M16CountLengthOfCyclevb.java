@@ -44,6 +44,9 @@ public class M16CountLengthOfCyclevb {
   testsPassed &= countLengthOfCycle(new int[]{1, 2, 0}, 0) == 3;
 	  System.out.println(findCircle(new int[]{1, 0}, 0));
 	  System.out.println(findCircle(new int[]{1, 2,0}, 0));
+	  System.out.println(findCircle(new int[]{1, 4,0}, 0));
+	  System.out.println(findCircle(new int[]{7}, 0));
+	  System.out.println(findCircle(new int[]{0}, 0));
   if(testsPassed) {
     System.out.println( "Test passed." );
     //return true;
@@ -72,6 +75,13 @@ public class M16CountLengthOfCyclevb {
 	}
 
 	private static int findCircle(int[] nums, int start) {
+
+		for(int i:nums){
+			//System.out.println(i);
+			if(i>nums.length){
+				return -1;
+			}
+		}
 		int s = nums[start];
 		int f = nums[nums[start]];
 		int sSoFar = 1;

@@ -17,7 +17,7 @@ public class RepeatedNumberInFractionAfterDecimal {
 		float d = (float) num / (float) den;
 		String number = String.valueOf(d);
 		String result = "";
-		String subString = number.substring(number.indexOf(".") + 1, number.length());
+		String subString = number.substring(number.indexOf(".") + 1);
 		result = number.substring(0, number.indexOf(".") + 1);
 
 		String intermediateSubString = "";

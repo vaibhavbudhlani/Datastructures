@@ -41,12 +41,12 @@ public static String findTopIpaddress(String[] lines) {
     });
 
     try {
-        ipAddressCountMap.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue))
-                .orElse(null).getKey();
-        Integer topCount = ipAddressCountMap.values().stream().mapToInt(v -> v).max()
-                .orElseThrow(IllegalArgumentException::new);
-        return ipAddressCountMap.entrySet().stream().filter(x -> x.getValue() == topCount).
-                map(Map.Entry::getKey).collect(Collectors.joining());
+        return ipAddressCountMap.entrySet().stream().max(Map.Entry.comparingByValue()).
+                map(Map.Entry::getKey).orElse(null);
+//        Integer topCount = ipAddressCountMap.values().stream().mapToInt(v -> v).max()
+//                .orElseThrow(IllegalArgumentException::new);
+//        return ipAddressCountMap.entrySet().stream().filter(x -> x.getValue() == topCount).
+//                map(Map.Entry::getKey).collect(Collectors.joining());
                 //.collect(Collectors.toCollection(HashSet::new));
     } catch (IllegalArgumentException exc) {
         System.out.println("Couldn't find a Valid IP Address in any of the lines!! ");
