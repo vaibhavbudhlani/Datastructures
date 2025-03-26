@@ -1,1 +1,5 @@
 Variations of LIS - Min deletions to make an array sorted 
+Coin Change - We need to calculate (focus)no. of ways(focus) how 4 can be made ex 1 + 1 + 1+ 1 or 1 + 1 + 2 (Use Pick and Not pick strategy from Array)
+Max cuts - Max. num of Cuts(focus) . For ex 4 can be made ex 1 + 1 + 1+ 1 of 4 cuts . (Use Subtracting all 3 cuts from Sum )
+Min Coins to make a value - For ex (9 6 5 1 ) and sum 11 . ( Loop and Try subtracting every value from sum and adding 1 if it is selected )
+Minimum Jumps to reach end - Check if from a particular point you can reach end . Now Recursively call how to reach till that point
